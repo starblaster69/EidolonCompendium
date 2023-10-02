@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PlaybookController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/playbooks', [\App\Http\Controllers\PlaybookController::class, 'index']);
+//specific route::gets are how to have a custom url that doesnt match the functions.
+//Route::get('/playbooks', [PlaybookController::class, 'index']);
+//Route::get('/playbooks/new', [PlaybookController::class, 'create']);
+Route::resource('playbooks', PlaybookController::class);
+
 
 Route::get('/moves', [\App\Http\Controllers\MoveController::class, 'index']);
